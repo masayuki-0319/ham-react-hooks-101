@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 type appProps = {
   name: string,
@@ -8,6 +8,14 @@ type appProps = {
 const App = (props: appProps) => {
   const [state, setState] = useState(props)
   const { name, price } = state
+
+  useEffect(() => {
+    console.log("This is like componentDidMount or componentDidUpdagte")
+  })
+
+  useEffect(() => {
+    console.log("This is like componentDidMount")
+  }, [name])
 
   return (
     <>
