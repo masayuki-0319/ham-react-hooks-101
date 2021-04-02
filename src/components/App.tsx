@@ -15,11 +15,20 @@ const App = () => {
     e.preventDefault()
     dispatch({
       type: 'CREATE_EVENT',
-      title: title,
-      body: body
+      payload: {
+        title: title,
+        body: body
+      }
     })
     setTitle('')
     setBody('')
+  }
+
+  const deleteAllEvents = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault()
+    dispatch({
+      type: 'DELETE_ALL_EVENT'
+    })
   }
 
   return (
@@ -35,7 +44,7 @@ const App = () => {
           <textarea className="form-control" id="formEventBody" value={body} onChange={e => setBody(e.target.value)}></textarea>
         </div>
         <button className="btn btn-primary" onClick={addEvent}>イベントを作成する</button>
-        <button className="btn btn-danger">全てのイベントを削除する</button>
+        <button className="btn btn-danger" onClick={deleteAllEvents}>全てのイベントを削除する</button>
       </form>
       <h4>イベント一覧</h4>
       <table className="table table-hover">

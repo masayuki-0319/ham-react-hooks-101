@@ -1,15 +1,20 @@
 import React from 'react';
 import { eventType } from '../types/event';
-import { eventAction } from '../reducers/index'
+import { Actions } from '../reducers/index'
 
 interface eventProps {
-  dispatch: React.Dispatch<eventAction>
+  dispatch: React.Dispatch<Actions>
   event: eventType
 }
 
 const Event = ({ dispatch, event }: eventProps) => {
   const handleClickDeleteBUtton = () => {
-    dispatch({ type: 'DELETE_EVENT', ...event })
+    dispatch({
+      type: 'DELETE_EVENT',
+      payload: {
+        id: event.id
+      }
+    })
   }
 
   return (
