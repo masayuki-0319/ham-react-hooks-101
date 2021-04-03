@@ -4,7 +4,6 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 import Event from './Event'
 import reducer from '../reducers'
-import { eventType } from '../types/event';
 
 const App = () => {
   const [state, dispatch] = useReducer(reducer, [])
@@ -57,7 +56,7 @@ const App = () => {
           </tr>
         </thead>
         <tbody>
-          {state.map((event, index) => (<Event key={index} dispatch={dispatch} event={event as Required<eventType>}/>))}
+          {state.map((event, index) => (<Event key={index} dispatch={dispatch} event={event}/>))}
         </tbody>
       </table>
     </div>
