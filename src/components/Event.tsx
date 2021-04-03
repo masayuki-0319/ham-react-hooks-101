@@ -1,7 +1,13 @@
-import React from 'react';
-import { eventStateProps } from '../reducers/index'
+import React, { useContext } from 'react';
+import { eventType } from '../types/event';
+import AppContext from '../contexts/AppContext';
 
-const Event = ({ dispatch, state: event }: eventStateProps) => {
+interface eventProps {
+  event: eventType
+}
+
+const Event = ({ event }: eventProps) => {
+  const { dispatch } = useContext(AppContext)
   const handleClickDeleteBUtton = () => {
     const result:boolean = window.confirm(`イベントID ${event.id} を本当に削除しますか？`)
     if (result) {
