@@ -9,12 +9,15 @@ interface eventProps {
 
 const Event = ({ dispatch, event }: eventProps) => {
   const handleClickDeleteBUtton = () => {
-    dispatch({
-      type: 'DELETE_EVENT',
-      payload: {
-        id: event.id
-      }
-    })
+    const result:boolean = window.confirm(`イベントID ${event.id} を本当に削除しますか？`)
+    if (result) {
+      dispatch({
+        type: 'DELETE_EVENT',
+        payload: {
+          id: event.id
+        }
+      })
+    }
   }
 
   return (
