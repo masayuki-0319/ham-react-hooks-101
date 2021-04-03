@@ -1,13 +1,7 @@
 import React from 'react';
-import { eventType } from '../types/event';
-import { Actions } from '../reducers/index'
+import { eventStateProps } from '../reducers/index'
 
-interface eventProps {
-  dispatch: React.Dispatch<Actions>
-  event: eventType
-}
-
-const Event = ({ dispatch, event }: eventProps) => {
+const Event = ({ dispatch, state: event }: eventStateProps) => {
   const handleClickDeleteBUtton = () => {
     const result:boolean = window.confirm(`イベントID ${event.id} を本当に削除しますか？`)
     if (result) {

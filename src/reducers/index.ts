@@ -23,7 +23,7 @@ const eventAllDelete = () => ({
   type: DELETE_ALL_EVENT
 })
 
-export type Actions = (
+type Actions = (
   | ReturnType<typeof eventCreate>
   | ReturnType<typeof eventDelete>
   | ReturnType<typeof eventAllDelete>
@@ -44,6 +44,16 @@ const events = (state: eventType[] = [], action: Actions) => {
     default:
       return state
   }
+}
+
+export interface eventStateProps {
+  state: eventType,
+  dispatch: React.Dispatch<Actions>
+}
+
+export interface eventsStateProps {
+  state: eventType[],
+  dispatch: React.Dispatch<Actions>
 }
 
 export default events
